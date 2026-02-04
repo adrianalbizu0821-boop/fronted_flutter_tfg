@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class NewsPage extends StatelessWidget {
@@ -7,25 +6,17 @@ class NewsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF121212),
       appBar: AppBar(
         title: const Text('Noticias'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Feed de noticias',
-              style: TextStyle(fontSize: 18),
+      body: const Center(
+        child: Text(
+          'Aquí se mostrará el feed de noticias',
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.white
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/news-detail');
-              },
-              child: const Text('Ver detalle'),
-            ),
-          ],
         ),
       ),
     );
