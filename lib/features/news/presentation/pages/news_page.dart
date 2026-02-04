@@ -10,10 +10,22 @@ class NewsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Noticias'),
       ),
-      body: const Center(
-        child: Text(
-          'Feed de noticias',
-          style: TextStyle(fontSize: 18),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Feed de noticias',
+              style: TextStyle(fontSize: 18),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/news-detail');
+              },
+              child: const Text('Ver detalle'),
+            ),
+          ],
         ),
       ),
     );

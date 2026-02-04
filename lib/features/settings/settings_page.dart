@@ -9,12 +9,15 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Ajustes'),
       ),
-      body: const Center(
-        child: Text(
-          'Pantalla de Ajustes',
-          style: TextStyle(fontSize: 18),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/notification-consent');
+          },
+          child: const Text('Configurar notificaciones'),
         ),
       ),
     );
   }
 }
+
