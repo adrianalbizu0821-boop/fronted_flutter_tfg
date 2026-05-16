@@ -1,89 +1,113 @@
 Frontend Flutter – Trabajo de Fin de Grado (TFG)
-Descripción general
-Este repositorio contiene el desarrollo del frontend móvil del Trabajo de Fin de Grado del ciclo de Desarrollo de Aplicaciones Multiplataforma (DAM).
-La aplicación está implementada utilizando Flutter (Dart) y tiene como objetivo integrar un feed de noticias y un sistema de notificaciones push dentro de una plataforma móvil del centro educativo.
+📌 Descripción general
+Este repositorio contiene el desarrollo del frontend móvil del Trabajo de Fin de Grado del ciclo formativo de Desarrollo de Aplicaciones Multiplataforma (DAM).
 
-El frontend está diseñado siguiendo una arquitectura clara, modular y escalable, permitiendo la futura integración con la plataforma web del colegio.
+La aplicación está desarrollada en Flutter (Dart) y permite:
 
-Tecnologías utilizadas
-Framework: Flutter
-Lenguaje: Dart
-IDE: Visual Studio Code
-Control de versiones: Git
-Repositorio remoto: GitHub
-Plataformas objetivo: Android / iOS
-Objetivos del frontend
-Implementar un feed de noticias consumiendo información desde WordPress vía API REST.
-Gestionar el consentimiento del usuario para recibir notificaciones.
-Integrar notificaciones push mediante Firebase Cloud Messaging.
-Garantizar una arquitectura limpia: separación en módulos (core, features, services, widgets).
-Ofrecer una interfaz moderna, clara y fácil de mantener.
-Plan de trabajo – Desarrollo por semanas
-📅 Semana 1 – Creación y configuración del proyecto
+• Visualizar un feed de noticias procedente del sitio web del centro educativo mediante API REST.  
+• Gestionar el consentimiento del usuario para recibir notificaciones push.
+• Integrar un sistema de notificaciones push mediante Firebase Cloud Messaging (FCM).  
+
+La estructura del proyecto sigue una arquitectura clara y modular, facilitando su mantenimiento y escalabilidad.
+
+🛠 Tecnologías utilizadas
+• Framework: Flutter  
+• Lenguaje: Dart  
+• IDE: Visual Studio Code  
+• Control de versiones: Git  
+• Repositorio remoto: GitHub  
+• Plataformas objetivo: Android / iOS  
+
+🎯 Objetivos del frontend
+• Mostrar un feed de noticias actualizado.  
+• Consumir datos desde la API REST de WordPress.  
+• Permitir que el usuario gestione su consentimiento para notificaciones.  
+• Integrar notificaciones push mediante FCM.  
+• Implementar una arquitectura modular (core/, features/, services/, widgets/).  
+• Ofrecer una interfaz moderna, limpia y funcional.
+
+📅 Plan de trabajo – Desarrollo por semanas
+
+Semana 1 – Creación y configuración del proyecto
 Objetivos
-Preparar el entorno de desarrollo.
-Crear el proyecto base en Flutter.
-Configurar Git y GitHub.
+• Preparar el entorno de desarrollo.  
+• Crear el proyecto base en Flutter.  
+• Configurar Git y GitHub.  
+
 Tareas realizadas
-Instalación y verificación de Flutter y Dart.
-Creación del proyecto con flutter create.
-Inicialización del repositorio Git.
-Creación del repositorio remoto en GitHub.
-Primer commit del proyecto.
+• Instalación y verificación de Flutter y Dart.  
+• Creación del proyecto con flutter create.  
+• Inicialización del repositorio local.  
+• Creación del repositorio remoto en GitHub.  
+• Primer commit.  
+
 Resultado
-Proyecto Flutter funcional y base estable del TFG.
-Repositorio GitHub correctamente configurado.
-📅 Semana 2 – Estructura base y diseño inicial
+✔ Proyecto Flutter funcional  
+✔ Repositorio GitHub configurado  
+
+Semana 2 – Estructura base y diseño inicial
 Objetivos
-Definir la estructura del proyecto.
-Preparar los primeros componentes visuales.
-Tareas realizadas / previstas
-Limpieza del código inicial generado por Flutter.
-Organización del proyecto en módulos:
-core/, features/, services/, widgets/.
-Configuración de main.dart.
-Creación de la pantalla Home.
-Definición del tema visual (AppTheme).
-Resultado
-Proyecto limpio, organizado y listo para implementar funcionalidad.
-📅 Semana 3 – Feed de noticias y consumo de datos
-Objetivos
-Implementar el feed dinámico de noticias.
-Integrar la API REST de WordPress.
+• Definir la estructura del proyecto.  
+• Preparar las primeras pantallas y el tema visual.  
+
 Tareas realizadas
-Creación de entidades, modelos y repositorios.
-Implementación de NewsRemoteDataSource con HTTP.
-Obtención de noticias reales desde WordPress.
-Listado de noticias con imágenes, título y resumen.
-Manejadores de carga (loading) y error.
-Navegación a detalle de noticia.
+• Limpieza del código generado por defecto.  
+• Organización del proyecto en carpetas:  
+  - core/  
+  - features/  
+  - services/  
+  - widgets/  
+• Configuración del main.dart y navegación inicial.  
+• Implementación del tema visual (AppTheme).  
+• Creación de la pantalla Home.  
+
 Resultado
-Feed de noticias completamente funcional dentro de la app.
-📅 Semana 4 – Notificaciones push y cierre del frontend
+✔ Proyecto limpio y estructurado  
+✔ Base visual lista para crecimiento  
+
+Semana 3 – Feed de noticias y consumo de API REST
 Objetivos
-Implementar notificaciones push.
-Finalizar la interfaz y pruebas de usuario.
+• Implementar el módulo completo de noticias.  
+• Consumir la API de WordPress.  
+
+Tareas realizadas
+• Creación de entidades, modelos y repositorios.  
+• Implementación de servicios HTTP con la librería http.  
+• Conexión a la API REST del sitio del colegio.  
+• Listado dinámico de noticias (título, resumen, imagen).  
+• Manejo de estados de carga y error.  
+• Navegación a la pantalla de detalle de la noticia.  
+
+Resultado
+✔ Feed de noticias funcional y conectado al backend real  
+
+Semana 4 – Notificaciones push y cierre del frontend
+Objetivos
+• Integrar el sistema de notificaciones push.  
+• Finalizar el frontend y realizar pruebas.  
+
 Tareas previstas
-Integración de Firebase Cloud Messaging (FCM).
-Manejo de permisos y almacenamiento de preferencias.
-Pantallas de configuración de notificaciones.
-Pruebas completas en Android e iOS.
-Optimización final del código y documentación.
+• Integración con Firebase Cloud Messaging.  
+• Solicitud y gestión del consentimiento del usuario.  
+• Almacenamiento de preferencias.  
+• Pruebas completas en Android e iOS.  
+• Corrección de errores y optimización visual.  
+
 Resultado esperado
-Aplicación funcional, estable y lista para integrar con el backend.
-Estado actual del proyecto
-🟢 Estructura definida
-🟢 Integración con API REST (noticias)
-🟢 Frontend en desarrollo activo
-🟡 Notificaciones pendientes de integración
-⚪ Backend pendiente de construcción (fase siguiente del TFG)
+✔ App lista para producción con sistema de notificaciones integrado  
 
-Autor
-Nombre del alumno: [Tu nombre aquí]
-Ciclo: Desarrollo de Aplicaciones Multiplataforma
-Centro educativo: [Nombre del centro]
-Curso académico: 2025 / 2026
+📌 Estado actual del proyecto
+🟢 Estructura del proyecto definida  
+🟢 Integración con API REST completada  
+🟢 Frontend en desarrollo activo  
+🟡 Notificaciones push pendientes de integración  
+⚪ Backend Spring Boot en fase siguiente del TFG  
 
-Licencia
-Proyecto desarrollado con fines académicos como Trabajo de Fin de Grado (TFG).
-No destinado a uso comercial.
+👤 Autor
+Alumno:Adrian Antonio Albizu Mejia  
+Ciclo: Desarrollo de Aplicaciones Multiplataforma (DAM)  
+Centro educativo: Colegio Santisima Trinidad 
+Curso académico: 2025 / 2026  
+
+📄 Licencia
+Proyecto desarrollado con fines académicos como parte del Trabajo de Fin de Grado (TFG).
