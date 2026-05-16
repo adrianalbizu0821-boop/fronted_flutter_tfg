@@ -12,11 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'News App',
-      theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.home,
-      routes: AppRoutes.routes,
-    );
+  debugShowCheckedModeBanner: false,
+  title: 'News App',
+  theme: AppTheme.lightTheme,
+  initialRoute: AppRoutes.home,
+  routes: AppRoutes.routes,
+  onGenerateRoute: AppRoutes.generateRoute,
+);
+
   }
 }
