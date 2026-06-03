@@ -54,9 +54,7 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Noticias'),
-      ),
+      appBar: AppBar(title: const Text('Noticias')),
       body: FutureBuilder<List<NewsEntity>>(
         future: _future,
         builder: (context, snapshot) {
@@ -77,26 +75,30 @@ class _NewsPageState extends State<NewsPage> {
             return _EmptyState();
           }
 
-          return ListView.separated(
-            padding: const EdgeInsets.all(12),
-            itemCount: newsList.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
-            itemBuilder: (context, index) {
-              final n = newsList[index];
-              return _NewsCard(
-                title: n.title,
-                date: _formatDate(n.date),
-                excerpt: _cleanHtml(n.excerpt),
-                imageUrl: n.imageUrl,
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    AppRoutes.newsDetail,
-                    arguments: n,
-                  );
-                },
-              );
-            },
+          return RefreshIndicator(
+            onRefresh: () async => _retry(),
+            child: ListView.separated(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(12),
+              itemCount: newsList.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 12),
+              itemBuilder: (context, index) {
+                final n = newsList[index];
+                return _NewsCard(
+                  title: n.title,
+                  date: _formatDate(n.date),
+                  excerpt: _cleanHtml(n.excerpt),
+                  imageUrl: n.imageUrl,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.newsDetail,
+                      arguments: n,
+                    );
+                  },
+                );
+              },
+            ),
           );
         },
       ),
@@ -156,18 +158,14 @@ class _NewsCard extends StatelessWidget {
                   // Fecha
                   Text(
                     date,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: Colors.black54),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall?.copyWith(color: Colors.black54),
                   ),
                   const SizedBox(height: 6),
 
                   // Título
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
+                  Text(title, style: Theme.of(context).textTheme.headlineSmall),
                   const SizedBox(height: 8),
 
                   // Extracto
@@ -300,10 +298,7 @@ class _ErrorState extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
-            FilledButton(
-              onPressed: onRetry,
-              child: const Text('Reintentar'),
-            ),
+            FilledButton(onPressed: onRetry, child: const Text('Reintentar')),
           ],
         ),
       ),
