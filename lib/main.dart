@@ -3,14 +3,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'core/routes/app_routes.dart';
 import 'core/theme/app_theme.dart';
 import 'service/notification_service.dart';
+import 'service/preferences_service.dart';
 
 final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
-  await NotificationService.initFCM();
+
+  final notificationsEnabled =
+      await PreferencesService.areNotificationsEnabled();
+
+  if (notificationsEnabled) {//Si el usuario acepta notis, envia el tocken
+    await NotificationService.initFCM();
+  }
+
   runApp(const MyApp());
 }
 

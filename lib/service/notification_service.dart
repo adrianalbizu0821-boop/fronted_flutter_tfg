@@ -12,8 +12,11 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 class NotificationService {
   static final FirebaseMessaging _messaging = FirebaseMessaging.instance;
+  static bool _initialized = false;
 
   static Future<void> initFCM() async {
+    if (_initialized) return;
+    _initialized = true;
     // Registrar handler background
     FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
@@ -52,6 +55,14 @@ class NotificationService {
       debugPrint('FCM TOKEN REFRESH: $newToken');
       // TODO: enviar al backend cuando esté listo
     });
+  }
+
+  static Future<String?> getToken() async {
+    return await _messaging.getToken();
+  }
+
+  static Future<void> deleteToken() async {
+    await _messaging.deleteToken();
   }
 
   static void _showInAppBanner(String title) {
