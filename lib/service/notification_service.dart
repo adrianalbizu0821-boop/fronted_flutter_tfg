@@ -19,12 +19,22 @@ class NotificationService {
 
     // Solicitar permisos (Android 13+ e iOS)
     await _messaging.requestPermission(
-      alert: true, badge: true, sound: true, provisional: false,
+      alert: true,
+      badge: true,
+      sound: true,
+      provisional: false,
     );
 
     // Obtener token
     final token = await _messaging.getToken();
     debugPrint('FCM TOKEN: $token');
+
+    //Cuando se abre desde una notificacion y la app esta cerrada
+    final initialMessage = await _messaging.getInitialMessage();
+
+    if (initialMessage != null) {
+      debugPrint('App abierta desde notificación: ${initialMessage.messageId}');
+    }
 
     // Foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage msg) {
@@ -46,7 +56,8 @@ class NotificationService {
 
   static void _showInAppBanner(String title) {
     final messenger = rootScaffoldMessengerKey.currentState;
-    messenger?.showSnackBar(
+    if (messenger == null) return;
+    messenger.showSnackBar(
       SnackBar(
         content: Text(title),
         behavior: SnackBarBehavior.floating,
