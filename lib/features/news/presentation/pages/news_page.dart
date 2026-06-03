@@ -65,6 +65,13 @@ class _NewsPageState extends State<NewsPage> {
 
           // Error con reintento
           if (snapshot.hasError) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('No se pudieron cargar las noticias'),
+                ),
+              );
+            });
             return _ErrorState(onRetry: _retry);
           }
 
