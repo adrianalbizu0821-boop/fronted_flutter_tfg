@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '/service/preferences_service.dart';
 import '/service/notification_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import '/service/backend_service.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -60,13 +61,23 @@ class _SettingsPageState extends State<SettingsPage> {
 
                 debugPrint('TOKEN PARA BACKEND: $token');
 
-                // TODO: enviar token al backend
+                if (token != null) {
+                  await BackendService.registerToken(token);
+
+                  debugPrint('Token registrado correctamente en backend');
+                }
               } else {
+                final token = await FirebaseMessaging.instance.getToken();
+
+                debugPrint('TOKEN A ELIMINAR: $token');
+
+                if (token != null) {
+                  await BackendService.deleteToken(token);
+                }
+
                 await FirebaseMessaging.instance.deleteToken();
 
                 debugPrint('Notificaciones desactivadas');
-
-                // TODO: avisar al backend para eliminar token
               }
             },
           ),
