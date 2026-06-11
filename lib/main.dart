@@ -4,23 +4,25 @@ import 'core/routes/app_routes.dart';
 import 'core/theme/app_theme.dart';
 import 'service/notification_service.dart';
 import 'service/preferences_service.dart';
+import 'package:flutter/foundation.dart';
 
 final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
-final GlobalKey<NavigatorState> navigatorKey =
-    GlobalKey<NavigatorState>();    
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  if (!kIsWeb) {
+    await Firebase.initializeApp();
 
-  final notificationsEnabled =
-      await PreferencesService.areNotificationsEnabled();
+    final notificationsEnabled =
+        await PreferencesService.areNotificationsEnabled();
 
-  if (notificationsEnabled) {//Si el usuario acepta notis, envia el tocken
-    await NotificationService.initFCM();
+    if (notificationsEnabled) {
+      await NotificationService.initFCM();
+    }
   }
 
   runApp(const MyApp());

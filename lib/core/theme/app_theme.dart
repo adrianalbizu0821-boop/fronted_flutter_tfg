@@ -54,12 +54,16 @@ class AppTheme {
         centerTitle: true,
       ),
       textTheme: base.textTheme.copyWith(
-        headlineLarge:
-            const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-        headlineMedium:
-            const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-        bodyLarge: const TextStyle(fontSize: 16),
-        bodyMedium: const TextStyle(fontSize: 14),
+        headlineLarge: const TextStyle(
+          fontSize: 26,
+          fontWeight: FontWeight.bold,
+        ),
+        headlineMedium: const TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
+        ),
+        bodyLarge: const TextStyle(fontSize: 16, color: Colors.white),
+        bodyMedium: const TextStyle(fontSize: 14, color: Colors.white70),
       ),
       cardTheme: const CardThemeData(
         elevation: 2,

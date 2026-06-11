@@ -14,7 +14,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool activarNotis = false;
   bool ultimasNoticias = true;
-  bool resumenDiario = false;
 
   @override
   void initState() {
@@ -88,17 +87,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 ? (value) {
                     setState(() {
                       ultimasNoticias = value;
-                    });
-                  }
-                : null,
-          ),
-          SwitchListTile(
-            title: const Text('Resumen diario'),
-            value: resumenDiario,
-            onChanged: activarNotis
-                ? (value) {
-                    setState(() {
-                      resumenDiario = value;
                     });
                   }
                 : null,

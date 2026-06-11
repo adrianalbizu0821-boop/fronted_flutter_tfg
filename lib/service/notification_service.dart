@@ -69,7 +69,7 @@ class NotificationService {
     FirebaseMessaging.instance.onTokenRefresh.listen((newToken) {
       debugPrint('FCM TOKEN REFRESH: $newToken');
 
-      // Aquí se puede actualizar el token en el backend
+      // Aquí se actualiza el token en el backend
     });
   }
 

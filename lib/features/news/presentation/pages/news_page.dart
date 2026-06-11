@@ -4,6 +4,7 @@ import 'package:fronted_flutter_tfg/features/news/data/news_repository_impl.dart
 import 'package:fronted_flutter_tfg/features/news/domain/get_news_usecase.dart';
 import 'package:fronted_flutter_tfg/features/news/domain/news_entity.dart';
 import 'package:fronted_flutter_tfg/core/routes/app_routes.dart';
+import 'package:flutter/foundation.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -144,7 +145,9 @@ class _NewsCard extends StatelessWidget {
             // Imagen 16:9
             AspectRatio(
               aspectRatio: 16 / 9,
-              child: hasImage
+              child: kIsWeb
+                  ? const _ImagePlaceholder()
+                  : hasImage
                   ? Image.network(
                       imageUrl,
                       fit: BoxFit.cover,

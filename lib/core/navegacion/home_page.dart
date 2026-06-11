@@ -9,13 +9,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final isWide = size.width >= 900;   // web / desktop
+    final isWide = size.width >= 900; // web / desktop
     final isTablet = size.width >= 600 && size.width < 900;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Plataforma del colegio'),
-      ),
+      appBar: AppBar(title: const Text('Plataforma del colegio')),
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1100),
@@ -39,8 +37,8 @@ class HomePage extends StatelessWidget {
                       final crossAxisCount = constraints.maxWidth >= 900
                           ? 3
                           : constraints.maxWidth >= 600
-                              ? 2
-                              : 1;
+                          ? 2
+                          : 1;
 
                       return GridView.count(
                         crossAxisCount: crossAxisCount,
@@ -56,7 +54,8 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => const NewsPage()),
+                                  builder: (_) => const NewsPage(),
+                                ),
                               );
                             },
                           ),
@@ -68,7 +67,8 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => const SettingsPage()),
+                                  builder: (_) => const SettingsPage(),
+                                ),
                               );
                             },
                           ),
@@ -80,7 +80,8 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => const AboutPage()),
+                                  builder: (_) => const AboutPage(),
+                                ),
                               );
                             },
                           ),
@@ -97,8 +98,10 @@ class HomePage extends StatelessWidget {
                     '© ${DateTime.now().year} Centro educativo · TFG DAM',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Colors.black54,
-                        ),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.7),
+                    ),
                   ),
                 ),
               ],
@@ -150,16 +153,16 @@ class _HeaderBanner extends StatelessWidget {
                   Text(
                     'Bienvenido/a',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     'Consulta las noticias del colegio, gestiona tus preferencias y mantente al día.',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Colors.white.withOpacity(0.95),
-                        ),
+                      color: Colors.white.withOpacity(0.95),
+                    ),
                   ),
                 ],
               ),
@@ -188,7 +191,7 @@ class _HomeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 3,
+      elevation: 5,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
@@ -200,26 +203,34 @@ class _HomeTile extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.12),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.primary.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(icon,
-                    color: Theme.of(context).colorScheme.primary, size: 28),
+                child: Icon(
+                  icon,
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 32,
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title,
-                        style: Theme.of(context).textTheme.headlineSmall),
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
                     const SizedBox(height: 6),
                     Text(
                       subtitle,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: Colors.black54),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withOpacity(0.75),
+                      ),
                     ),
                   ],
                 ),

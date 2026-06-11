@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fronted_flutter_tfg/features/news/domain/news_entity.dart';
-// Opcional: descomenta si activas compartir con share_plus
+import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:share_plus/share_plus.dart';
 
 class NewsDetailPage extends StatelessWidget {
@@ -63,10 +64,9 @@ class NewsDetailPage extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                   child: Text(
                     _formatDate(news.date),
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: Colors.black54),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall?.copyWith(color: Colors.black54),
                   ),
                 ),
                 Padding(
@@ -82,11 +82,16 @@ class NewsDetailPage extends StatelessWidget {
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
             sliver: SliverToBoxAdapter(
-              child: Text(
-                content,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      height: 1.45,
-                    ),
+              child: Html(
+                data: news.content,
+                onLinkTap: (url, attributes, element) async {
+                  if (url != null) {
+                    await launchUrl(
+                      Uri.parse(url),
+                      mode: LaunchMode.externalApplication,
+                    );
+                  }
+                },
               ),
             ),
           ),
